@@ -42,7 +42,7 @@ There are two (.csv) files in which you will need (listed below). You need to sa
    python3 [./python script] [.csv file containing List of names] [.csv file containing List of old pairs] [no. of weeks you want to generate]
 
 ```
-python3 ./Coffee_Roulette.py NamesList.csv ListOfHistoricalPairs.csv 22
+python3 ./Coffee_Roulette.py NamesList.csv CR_Old_Pairs.csv 1
 ```
 
 ## Output
