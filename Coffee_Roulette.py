@@ -10,7 +10,7 @@ namesListFileName = sys.argv[1]
 #  comma seperated - names start on 2nd row
 coffeeRoueletteOldList = sys.argv[2]
 
-numberOfWeeksToGenerate = sys.argv[3]
+numberOfWeeksToGenerate = int(sys.argv[3])
 
 
 def setupNamesWithPotentialMatches():
@@ -138,9 +138,31 @@ def writeWeeklyPairingsToFile(weeklyPairings):
             for pairing in weekSorted:
                 writer.writerow(pairing.split('@'))
 
+def appendOldPairs(weeklyPairings):
+    # open the file in the append mode - list printed as 2 columns
+    with open('CR_Old_Pairs.csv', 'a',  newline='', encoding='UTF8') as f:
+        print('appending...')
+
+        # create the csv writer
+        writer = csv.writer(f)
+
+        i = 0
+        for week in weeklyPairings:
+            i += 1
+            weekSorted = []
+            for pairing in week:
+                line = pairing[0] + '@' + pairing[1]
+                weekSorted.append(line)
+            weekSorted.sort()
+            for pairing in weekSorted:
+                writer.writerow(pairing.split('@'))
+
 
 namesToMatches = setupNamesWithPotentialMatches()
 namesToMatches = removeExistingMatches(namesToMatches)
 weeklyPairings = createAllPairings(namesToMatches)
 writeWeeklyPairingsToFile(weeklyPairings)
+appendOldPairs(weeklyPairings)
 print('all done yeah boy')
+
+# python3 ./Coffee_Roulette.py NamesList.csv CR_Old_Pairs.csv 1
