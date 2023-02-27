@@ -6,7 +6,7 @@
 ### Installation 
 - Clone the repo
 ```
-git clone https://github.com/jughent/Coffee-Roulette.git
+git clone https://github.com/lukellyk/Coffee-Roulette.git
 ```
 
 ### Preparing Your Files
